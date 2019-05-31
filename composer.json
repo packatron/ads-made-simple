@@ -1,0 +1,16 @@
+{
+  "name": "wp-quality/ads-made-simple",
+  "version": "0.0.1",
+  "autoload": {
+    "psr-4": {
+      "WpQuality\\AdsMadeSimple\\": "src/",
+      "WpQuality\\AdsMadeSimple\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "javanile/granular": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.5.3"
+  }
+}
