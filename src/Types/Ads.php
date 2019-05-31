@@ -9,6 +9,7 @@ class Ads extends Bindable
         'action:init' => 'init',
         'action:add_meta_boxes' => 'addMetaBox',
         'action:admin_enqueue_scripts' => 'adminEnqueueScripts',
+        'action:save_post:10:2' => 'savePost',
     ];
 
     public function init()
@@ -68,6 +69,8 @@ class Ads extends Bindable
 
     public function renderMetaBox($ads)
     {
+        $adsImageId = get_post_meta($ads->ID, 'ads_image_id', true);
+
         include __DIR__.'/../../templates/ads-meta-box.php';
     }
 
@@ -75,7 +78,16 @@ class Ads extends Bindable
     {
         if (is_admin()) {
             wp_enqueue_media();
-            wp_enqueue_script( 'ads-admin-js', plugins_url('../../public/js/ads.admin.js', __FILE__));
+            wp_enqueue_script('ads-admin-js', plugins_url('../../public/js/ads.admin.js', __FILE__));
         }
+    }
+
+    public function savePost($postId = false, $post = false)
+    {
+        if ($post->post_type != 'ads') {
+            return;
+        }
+
+        update_post_meta($postId, 'ads_image_id', $_POST['ads_image_id']);
     }
 }
