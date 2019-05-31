@@ -8,6 +8,7 @@ class Ads extends Bindable
     public static $bindings = [
         'action:init' => 'init',
         'action:add_meta_boxes' => 'addMetaBox',
+        'action:admin_enqueue_scripts' => 'adminEnqueueScripts',
     ];
 
     public function init()
@@ -68,5 +69,13 @@ class Ads extends Bindable
     public function renderMetaBox($ads)
     {
         include __DIR__.'/../../templates/ads-meta-box.php';
+    }
+
+    public function adminEnqueueScripts()
+    {
+        if (is_admin()) {
+            wp_enqueue_media();
+            wp_enqueue_script( 'ads-admin-js', plugins_url('../../public/js/ads.admin.js', __FILE__));
+        }
     }
 }

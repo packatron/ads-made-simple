@@ -9,7 +9,7 @@ services:
     ports:
       - 17080:80
     volumes:
-      - wp-content:/var/www/html/wp-content:rw
+      - ./wp-content:/var/www/html/wp-content:rw
       - ./:/var/www/html/wp-content/plugins/ads-made-simple:rw
 
   mysql:
@@ -39,5 +39,4 @@ services:
       - ./:/app
 
 volumes:
-  wp-content:
   mysql:
