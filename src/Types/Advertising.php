@@ -80,11 +80,21 @@ class Advertising extends Bindable
     /**
      * @param $ads
      */
-    public function renderMetaBox($ads)
+    public function renderMetaBox($advertising)
     {
-        $adsImageId = get_post_meta($ads->ID, 'ads_image_id', true);
+        $advertisingWidth = get_post_meta($advertising->ID, 'width', true) ?: 250;
+        $advertisingHeight = get_post_meta($advertising->ID, 'height', true) ?: 250;
 
-        include __DIR__.'/../../templates/ads-meta-box.php';
+        $advertisingBannerId = [];
+        $advertisingBannerSrc = [];
+        $advertisingBannerLink = [];
+        for ($i = 0; $i < 3; $i++) {
+            $advertisingBannerId[$i] = get_post_meta($advertising->ID, 'banner_id_'.$i, true) ?: '';
+            $advertisingBannerSrc[$i] = get_post_meta($advertising->ID, 'banner_src_'.$i, true) ?: '';
+            $advertisingBannerLink[$i] = get_post_meta($advertising->ID, 'banner_link_'.$i, true) ?: '';
+        }
+
+        include __DIR__.'/../../templates/advertising-meta-box.php';
     }
 
     /**
@@ -92,10 +102,21 @@ class Advertising extends Bindable
      */
     public function adminEnqueueScripts()
     {
-        if (is_admin()) {
-            wp_enqueue_media();
-            wp_enqueue_script('ads-admin-js', plugins_url('../../public/js/ads.admin.js', __FILE__));
+        if (!is_admin()) {
+            return;
         }
+
+        wp_enqueue_media();
+
+        wp_enqueue_script(
+            'ads-made-simple-advertising-admin-js',
+            plugins_url('../../assets/js/advertising.admin.js', __FILE__)
+        );
+
+        wp_enqueue_style(
+            'ads-made-simple-admin-css',
+            plugins_url('../../assets/css/admin.css', __FILE__)
+        );
     }
 
     /**
