@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   wordpress:
-    image: wordpress:5.1.1
+    image: wordpress:5.2.2
     environment:
       - WORDPRESS_DB_PASSWORD=secret
     ports:
@@ -11,6 +11,9 @@ services:
     volumes:
       - ./wp-content:/var/www/html/wp-content:rw
       - ./:/var/www/html/wp-content/plugins/ads-made-simple:rw
+    links:
+      - mysql
+      - adminer
 
   mysql:
     image: mysql:5.7

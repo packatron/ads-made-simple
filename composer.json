@@ -7,10 +7,23 @@
       "WpQuality\\AdsMadeSimple\\Tests\\": "tests/"
     }
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
   "require": {
-    "javanile/granular": "*"
+    "javanile/granular": "*",
+    "composer/installers": "~1.0",
+    "wpackagist-plugin/loco-translate":"2.3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^6.5.3"
+  },
+  "extra": {
+    "installer-paths": {
+      "wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
+    }
   }
 }

@@ -9,4 +9,4 @@ class App extends Autoload
     {
         $this->autoload(__NAMESPACE__, __DIR__);
     }
- }
+}
