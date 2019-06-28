@@ -1,1 +1,1 @@
-# simple-advertisement
+# Ads Made Simple
