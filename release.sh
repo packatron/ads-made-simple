@@ -1,13 +1,14 @@
 #!/bin/bash
+set -e
+WORKDIR=$(echo $PWD)
 
-[[ -d build ]] || mkdir build
+mkdir -p build
 
 cd build
-
 git clone https://github.com/wp-quality/ads-made-simple
 
 cd ads-made-simple
-
 composer install
 
-#rm -fr build
+cd ${WORKDIR}
+rm -fr build

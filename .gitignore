@@ -1,4 +1,5 @@
 .idea/
+build/
 vendor/
 node_modules/
 npm-debug.log
