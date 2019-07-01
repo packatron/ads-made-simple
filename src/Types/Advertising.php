@@ -138,7 +138,7 @@ class Advertising extends Bindable
     {
         wp_enqueue_script(
             'jquery-cycle-lite-js',
-            get_stylesheet_directory_uri() . '/assets/js/jquery.cycle.lite.js',
+            plugins_url('../../assets/js/jquery.cycle.lite.js', __FILE__),
             array( 'jquery' )
         );
     }
@@ -176,10 +176,6 @@ class Advertising extends Bindable
         if ($post->post_type != 'advertising') {
             return;
         }
-
-        var_dump($_POST);
-        die();
-
 
         update_post_meta($postId, 'width', $_POST['advertising_width']);
         update_post_meta($postId, 'height', $_POST['advertising_height']);

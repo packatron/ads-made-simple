@@ -1,9 +1,3 @@
-<?php
-
-var_dump($advertising);
-
-?>
-
 
 <fieldset class="with-border margin-bottom-8px">
   <legend><?=__('Dimension', 'ads-made-simple')?></legend>

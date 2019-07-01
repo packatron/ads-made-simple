@@ -41,5 +41,11 @@ services:
     volumes:
       - ./:/app
 
+  release:
+    build: .
+    command: ['bash', 'release.sh']
+    volumes:
+      - ./:/app
+
 volumes:
   mysql:
