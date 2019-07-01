@@ -13,6 +13,8 @@ class Advertising extends Bindable
         'action:add_meta_boxes' => 'addMetaBox',
         'action:admin_enqueue_scripts' => 'adminEnqueueScripts',
         'action:save_post:10:2' => 'savePost',
+        'action:wp_enqueue_scripts' => 'wpEnqueueScripts',
+        'shortcode:advertising' => 'renderAdvertising',
     ];
 
     /**
@@ -70,7 +72,7 @@ class Advertising extends Bindable
     public function addMetaBox()
     {
         add_meta_box(
-            'ads-panel',
+            'advertising-meta-box',
             __( 'Global Notice', 'sitepoint' ),
             [$this, 'renderMetaBox'],
             'advertising'
@@ -78,23 +80,67 @@ class Advertising extends Bindable
     }
 
     /**
+     *
+     */
+    public function getAdvertising($id)
+    {
+        $advertising = [
+            'width' => get_post_meta($id, 'width', true) ?: 250,
+            'height' => get_post_meta($advertising->ID, 'height', true) ?: 250,
+            'bannerId' => [],
+            'bannerSrc' => [],
+            'bannerLink' => [],
+        ];
+
+        for ($i = 0; $i < 3; $i++) {
+            $advertising['bannerId'][$i] = get_post_meta($id, 'banner_id_'.$i, true) ?: '';
+            $advertising['bannerSrc'][$i] = get_post_meta($id, 'banner_src_'.$i, true) ?: '';
+            $advertising['bannerLink'][$i] = get_post_meta($id, 'banner_link_'.$i, true) ?: '';
+        }
+
+        return $advertising;
+    }
+
+    /**
      * @param $ads
      */
     public function renderMetaBox($advertising)
     {
-        $advertisingWidth = get_post_meta($advertising->ID, 'width', true) ?: 250;
-        $advertisingHeight = get_post_meta($advertising->ID, 'height', true) ?: 250;
-
-        $advertisingBannerId = [];
-        $advertisingBannerSrc = [];
-        $advertisingBannerLink = [];
-        for ($i = 0; $i < 3; $i++) {
-            $advertisingBannerId[$i] = get_post_meta($advertising->ID, 'banner_id_'.$i, true) ?: '';
-            $advertisingBannerSrc[$i] = get_post_meta($advertising->ID, 'banner_src_'.$i, true) ?: '';
-            $advertisingBannerLink[$i] = get_post_meta($advertising->ID, 'banner_link_'.$i, true) ?: '';
-        }
+        $advertising = $this->getAdvertising($advertising->ID);
 
         include __DIR__.'/../../templates/advertising-meta-box.php';
+    }
+
+    /**
+     *
+     */
+    public function renderAdvertising($attr)
+    {
+        if (empty($attr['id']) ||
+            get_post_status($attr['id']) != 'publish' ||
+            get_post_type($attr['id']) != 'advertising') {
+            return '';
+        }
+
+        $advertising = $this->getAdvertising($attr['id']);
+
+        ob_start();
+
+        include __DIR__.'/../../templates/advertising.php';
+
+        return ob_get_clean();
+    }
+
+    /**
+     *
+     */
+    public function wpEnqueueScripts()
+    {
+        wp_enqueue_script(
+            'jquery-cycle-lite-js',
+            get_stylesheet_directory_uri() . '/assets/js/jquery.cycle.lite.js',
+            array( 'jquery' )
+        );
     }
 
     /**
@@ -106,11 +152,13 @@ class Advertising extends Bindable
             return;
         }
 
-        wp_enqueue_media();
+        wp_enqueue_media('media-upload');
+        wp_enqueue_media('thickbox');
 
         wp_enqueue_script(
             'ads-made-simple-advertising-admin-js',
-            plugins_url('../../assets/js/advertising.admin.js', __FILE__)
+            plugins_url('../../assets/js/advertising.admin.js', __FILE__),
+            array('jquery','media-upload','thickbox')
         );
 
         wp_enqueue_style(
@@ -129,6 +177,17 @@ class Advertising extends Bindable
             return;
         }
 
-        update_post_meta($postId, 'ads_image_id', $_POST['ads_image_id']);
+        var_dump($_POST);
+        die();
+
+
+        update_post_meta($postId, 'width', $_POST['advertising_width']);
+        update_post_meta($postId, 'height', $_POST['advertising_height']);
+
+        for ($i = 0; $i < 3; $i++) {
+            update_post_meta($postId, 'banner_id_'.$i, $_POST['advertising_banner_id_'.$i]);
+            update_post_meta($postId, 'banner_src_'.$i, $_POST['advertising_banner_src_'.$i]);
+            update_post_meta($postId, 'banner_link_'.$i, $_POST['advertising_banner_link_'.$i]);
+        }
     }
 }

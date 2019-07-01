@@ -1,34 +1,60 @@
+jQuery(function($){
 
-$(document).ready(function() {
-    if (!$('.ads-made-simple-banner-select').length) { return; }
-    if (typeof wp == 'undefined' || !wp.media || !wp.media.editor) { return; }
+    // Set all variables to be used in scope
+    var frame,
+        metaBox = $('#advertising-meta-box.postbox'),
+        addImgLink = metaBox.find('.ads-made-simple-banner-select'),
+        delImgLink = metaBox.find('.ads-made-simple-banner-remove')
 
-    $(document).on('click', '.ads-made-simple-banner-select', function(e) {
-        e.preventDefault();
-        var button = $(this);
-        var id = button.prev();
-        var img = id.prev();
+    var button;
 
-        wp.media.editor.send.attachment = function(props, attachment) {
-            img.attr('src', attachment.sizes.full.url);
-            id.val(attachment.id);
-            return attachment
-        };
+    // ADD IMAGE LINK
+    addImgLink.on( 'click', function( event ){
+        event.preventDefault();
 
-        wp.media.editor.open(button);
+        button = $(this);
 
-        return false;
+        // If the media frame already exists, reopen it.
+        if ( frame ) {
+            frame.open();
+            return;
+        }
+
+        // Create a new media frame
+        frame = wp.media({
+            title: 'Select or Upload Media Of Your Chosen Persuasion',
+            button: {
+                text: 'Use this media'
+            },
+            multiple: false  // Set to true to allow multiple files to be selected
+        });
+
+
+        // When an image is selected in the media frame...
+        frame.on( 'select', function() {
+            var attachment = frame.state().get('selection').first().toJSON();
+            var imgSrcInput = button.prev();
+            var imgIdInput = button.prev().prev();
+            var imgDisplay = button.prev().prev().prev();
+
+            imgIdInput.val( attachment.id );
+            imgSrcInput.val( attachment.sizes.full.url );
+            imgDisplay.attr('src', attachment.sizes.full.url);
+        });
+
+        // Finally, open the modal on click
+        frame.open();
     });
 
-    $(document).on('click', '.ads-made-simple-banner-remove', function(e) {
-        e.preventDefault();
-        var button = $(this);
-        var id = button.prev().prev();
-        var img = id.prev();
-
-        id.val('');
-        img.attr('src', '');
-
-        return false;
+    // DELETE IMAGE LINK
+    delImgLink.on( 'click', function( event ){
+        event.preventDefault();
+        button = $(this);
+        var imgSrcInput = button.prev().prev();
+        var imgIdInput = button.prev().prev().prev();
+        var imgDisplay = button.prev().prev().prev().prev();
+        imgIdInput.val('');
+        imgSrcInput.val('');
+        imgDisplay.attr('src', '');
     });
 });
