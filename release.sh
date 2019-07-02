@@ -16,6 +16,7 @@ VERSION=$(cat composer.json | grep version | head -n 1 | sed 's/.*version//' | t
 composer install --no-dev --prefer-dist
 
 cd ${WORKDIR}/build
+rm -f ../dist/ads-made-simple-${VERSION}.zip
 zip -r ../dist/ads-made-simple-${VERSION}.zip ads-made-simple \
     -x "ads-made-simple/.git/*" \
        "ads-made-simple/.idea/*" \
