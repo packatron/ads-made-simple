@@ -2,6 +2,7 @@
 set -e
 WORKDIR=$(echo $PWD)
 
+mkdir -p ${WORKDIR}/dist
 mkdir -p ${WORKDIR}/build
 rm -fr ${WORKDIR}/build
 mkdir -p ${WORKDIR}/build
