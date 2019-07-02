@@ -25,7 +25,8 @@ zip -r ../dist/ads-made-simple-${VERSION}.zip ads-made-simple \
        "ads-made-simple/Dockerfile" \
        "ads-made-simple/composer.*" \
        "ads-made-simple/wp-content/*" \
-       "ads-made-simple/*.{yml,sh}" \
+       "ads-made-simple/*.yml" \
+       "ads-made-simple/*.sh"
 
 #cd ${WORKDIR}
 #rm -fr build
