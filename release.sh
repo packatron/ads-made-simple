@@ -19,6 +19,8 @@ cd ${WORKDIR}/build
 zip -r ../dist/ads-made-simple-${VERSION}.zip ads-made-simple \
     -x "ads-made-simple/.git/*" \
        "ads-made-simple/.idea/*" \
+       "ads-made-simple/dist/*" \
+       "ads-made-simple/build/*" \
        "ads-made-simple/.*" \
        "ads-made-simple/Dockerfile" \
        "ads-made-simple/composer.*" \
