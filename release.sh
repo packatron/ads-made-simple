@@ -29,5 +29,4 @@ zip -r ../dist/ads-made-simple-${VERSION}.zip ads-made-simple \
        "ads-made-simple/*.yml" \
        "ads-made-simple/*.sh"
 
-#cd ${WORKDIR}
-#rm -fr build
+rm -fr ${WORKDIR}/build
