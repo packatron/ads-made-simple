@@ -1,18 +1,18 @@
 {
   "name": "packatron/ads-made-simple",
   "version": "0.0.2",
-  "autoload": {
-    "psr-4": {
-      "Packatron\\AdsMadeSimple\\": "src/",
-      "Packatron\\AdsMadeSimple\\Tests\\": "tests/"
-    }
-  },
   "repositories": [
     {
       "type": "composer",
       "url": "https://wpackagist.org"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Packatron\\AdsMadeSimple\\": "src/",
+      "Packatron\\AdsMadeSimple\\Tests\\": "tests/"
+    }
+  },
   "require": {
     "javanile/granular": "*"
   },
