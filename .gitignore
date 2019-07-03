@@ -5,3 +5,4 @@ node_modules/
 npm-debug.log
 wp-content
 !wp-content/uploads/.gitkeep
+composer.lock

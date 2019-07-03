@@ -1,5 +1,5 @@
 <?php
-namespace WpQuality\AdsMadeSimple\Types;
+namespace Packatron\AdsMadeSimple\Types;
 
 use Javanile\Granular\Bindable;
 
@@ -73,7 +73,7 @@ class Advertising extends Bindable
     {
         add_meta_box(
             'advertising-meta-box',
-            __( 'Global Notice', 'sitepoint' ),
+            __( 'Banners', 'sitepoint' ),
             [$this, 'renderMetaBox'],
             'advertising'
         );
