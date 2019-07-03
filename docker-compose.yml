@@ -43,6 +43,7 @@ services:
 
   release:
     build: .
+    user: 1000:1000
     command: ['bash', 'release.sh']
     volumes:
       - ./:/app
