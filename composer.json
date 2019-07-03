@@ -1,10 +1,10 @@
 {
-  "name": "wp-quality/ads-made-simple",
+  "name": "packatron/ads-made-simple",
   "version": "0.0.1",
   "autoload": {
     "psr-4": {
-      "WpQuality\\AdsMadeSimple\\": "src/",
-      "WpQuality\\AdsMadeSimple\\Tests\\": "tests/"
+      "Packatron\\AdsMadeSimple\\": "src/",
+      "Packatron\\AdsMadeSimple\\Tests\\": "tests/"
     }
   },
   "repositories": [

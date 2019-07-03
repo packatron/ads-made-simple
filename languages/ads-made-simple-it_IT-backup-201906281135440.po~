@@ -1,0 +1,113 @@
+# Blank WordPress Pot
+# Copyright 2014 ...
+# This file is distributed under the GNU General Public License v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Blank WordPress Pot v1.0.0\n"
+"POT-Creation-Date: 2019-06-28 11:34+0000\n"
+"PO-Revision-Date: 2019-06-28 11:35+0000\n"
+"Last-Translator: admin <admin@admin.dev>\n"
+"Language-Team: Italiano\n"
+"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:"
+"1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-Bookmarks: \n"
+"Language: it_IT\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.0; wp-5.2.2"
+
+#: src/Types/Ads.php:18
+msgctxt "post type general name"
+msgid "Advertising"
+msgstr "Pubblicità"
+
+#: src/Types/Ads.php:19
+msgctxt "post type singular name"
+msgid "Advertising"
+msgstr "Pubblicità"
+
+#: src/Types/Ads.php:20
+msgctxt "admin menu"
+msgid "Advertising"
+msgstr "Pubblicità"
+
+#: src/Types/Ads.php:21
+msgctxt "add new on admin bar"
+msgid "Advertising"
+msgstr "Pubblicità"
+
+#: src/Types/Ads.php:22
+msgctxt "ads"
+msgid "Add New"
+msgstr "Aggiungi Nuova"
+
+#: src/Types/Ads.php:23
+msgid "Add New Advertising"
+msgstr ""
+
+#: src/Types/Ads.php:24
+msgid "New Advertising"
+msgstr ""
+
+#: src/Types/Ads.php:25
+msgid "Edit Advertising"
+msgstr ""
+
+#: src/Types/Ads.php:26
+msgid "View Advertising"
+msgstr ""
+
+#: src/Types/Ads.php:27
+msgid "All Advertising"
+msgstr ""
+
+#: src/Types/Ads.php:28
+msgid "Search Advertising"
+msgstr ""
+
+#: src/Types/Ads.php:29
+msgid "Parent Advertising:"
+msgstr ""
+
+#: src/Types/Ads.php:30
+msgid "No advertising found."
+msgstr ""
+
+#: src/Types/Ads.php:31
+msgid "No advertising found in Trash."
+msgstr ""
+
+#: src/Types/Ads.php:36
+msgid "Description."
+msgstr ""
+
+#. Name of the plugin
+msgid "Ads Made Simple"
+msgstr ""
+
+#. Description of the plugin
+msgid "Get a new banana for your split."
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/wp-quality/ads-made-simple"
+msgstr ""
+
+#. Author of the plugin
+msgid "WP Quality"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/wp-quality"
+msgstr ""
