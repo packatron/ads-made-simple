@@ -1,6 +1,6 @@
 {
   "name": "packatron/ads-made-simple",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "autoload": {
     "psr-4": {
       "Packatron\\AdsMadeSimple\\": "src/",
