@@ -27,7 +27,7 @@
     </div>
     <div>
       <label><?=__('Link address', 'ads-made-simple')?></label>
-      <input type="url" value="<?=$advertising['BannerLink'][$i]?>" class="full-width" name="advertising_banner_link_<?=$i?>">
+      <input type="url" value="<?=$advertising['bannerLink'][$i]?>" class="full-width" name="advertising_banner_link_<?=$i?>">
     </div>
   </fieldset>
 <?php } ?>

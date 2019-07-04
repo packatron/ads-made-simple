@@ -86,7 +86,7 @@ class Advertising extends Bindable
     {
         $advertising = [
             'width' => get_post_meta($id, 'width', true) ?: 250,
-            'height' => get_post_meta($advertising->ID, 'height', true) ?: 250,
+            'height' => get_post_meta($id, 'height', true) ?: 250,
             'bannerId' => [],
             'bannerSrc' => [],
             'bannerLink' => [],
@@ -173,7 +173,10 @@ class Advertising extends Bindable
      */
     public function savePost($postId = false, $post = false)
     {
-        if ($post->post_type != 'advertising') {
+        if (wp_is_post_revision($postId) ||
+            wp_is_post_autosave($postId) ||
+            $post->post_type != 'advertising' ||
+            $post->post_status == 'auto-draft') {
             return;
         }
 
