@@ -6,4 +6,4 @@ npm-debug.log
 wp-content
 !wp-content/uploads/.gitkeep
 composer.lock
-.DS_Store
+**/.DS_Store
