@@ -5,6 +5,7 @@ services:
   wordpress:
     image: wordpress:5.2.2
     environment:
+      - WORDPRESS_DEBUG=1
       - WORDPRESS_DB_PASSWORD=secret
     ports:
       - 17080:80
